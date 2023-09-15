@@ -29,7 +29,7 @@ export const Header = ({
 	return (
 		<header>
 			<div className='headerLogo'>
-			<img src="public/img/logosnaggy.png" alt="" width={90} height={90}/>
+			<img src="/img/logosnaggy.png" alt="" width={90} height={90}/>
 			<h1>S N A G G Y</h1>
 			</div>
 			<div className='container-icon'>
