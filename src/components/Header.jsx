@@ -20,6 +20,29 @@ export const Header = ({
 		setAllProducts(results);
 	};
 
+	// const openNewTab = () => {
+	// 	// URL
+	// 	window.open('https://www.ejemplo.com', '_blank');
+	//  };
+
+	const [showModal, setShowModal] = useState(false);
+
+	const openModal = () => {
+		setShowModal(true);
+	};
+
+	const closeModal = () => {
+		setShowModal(false);
+	};
+
+	// const Modal = ({ onClose }) => (
+	// 	<div className={`modal ${showModal ? 'show' : ''}`}>
+	// 		<button onClick={() => { setShowModal(false); onClose(); }}>
+	// 			Cerrar
+	// 		</button>
+	// 	</div>
+	// );
+
 	const onCleanCart = () => {
 		setAllProducts([]);
 		setTotal(0);
@@ -29,8 +52,8 @@ export const Header = ({
 	return (
 		<header>
 			<div className='headerLogo'>
-			<img src="/img/LOGO.png" alt="" width={90} height={90}/>
-			<h1>BILLAR CHIEF</h1>
+				<img src="/img/LOGO.png" alt="" width={90} height={90} />
+				<h1>BILLAR CHIEF</h1>
 			</div>
 			<div className='container-icon'>
 				<div
@@ -51,15 +74,16 @@ export const Header = ({
 							d='M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z'
 						/>
 					</svg>
+
+
 					<div className='count-products'>
 						<span id='contador-productos'>{countProducts}</span>
 					</div>
 				</div>
 
 				<div
-					className={`container-cart-products ${
-						active ? '' : 'hidden-cart'
-					}`}
+					className={`container-cart-products ${active ? '' : 'hidden-cart'
+						}`}
 				>
 					{allProducts.length ? (
 						<>
@@ -104,12 +128,30 @@ export const Header = ({
 							<button className='btn-clear-all' onClick={onCleanCart}>
 								Vaciar Carrito
 							</button>
+
+							<button className='btn-clear-all' onClick={openModal}>
+								Factura
+							</button>
+
 						</>
 					) : (
+
+
+
 						<p className='cart-empty'>El carrito está vacío</p>
 					)}
 				</div>
 			</div>
+
+			{showModal && (
+				<div className='modal-overlay'>
+					<div className='modal'>
+						<p>Datos</p>
+						<button onClick={closeModal}>Cerrar</button>
+					</div>
+				</div>
+
+			)}
 		</header>
 	);
 };
